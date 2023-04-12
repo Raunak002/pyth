@@ -15,12 +15,26 @@ for i in range(3):
     z=z+a
     b=random.choice(string.ascii_letters)
     y=y+b
-word=input("Enter your string")
-if len(word)>=3:
-    c=word[0]
-    word=word.replace(word[0],"")
-    coded_word=z+word+c+y
-    print(f"your coded word is {coded_word} ")
-else:
-    coded_word= ''.join(word.__reversed__())
-
+word=input("Enter your string= \n ?")
+choice=int(input("Enter 1 to encode and 0 to decrypt"))
+if choice==1:
+    if len(word)>=3:
+        c=word[0]
+        word=word.replace(word[0],"")
+        coded_word=z+word+c+y
+        print(f"your coded word is {coded_word} ")
+    else:
+        coded_word= ''.join(reversed(word))
+        print(coded_word)
+elif choice ==0:
+    if len(word)<3:
+        z=reversed(word)
+        decrypted=''.join(z)
+        print(decrypted)
+    else:
+        z=word.replace(word[:3],"")
+        again=z.replace(word[-3:],"")
+        removed_letter=again[-1]
+        again2=again.replace(again[-1],"")
+        decrypted=removed_letter+again2
+        print(decrypted)
